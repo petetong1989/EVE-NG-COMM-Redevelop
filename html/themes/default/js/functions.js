@@ -4212,7 +4212,9 @@ function printPageLabOpen(lab) {
         $('#lab-sidebar ul').append('<li class="action-status-bar"><a class="action-status" href="javascript:void(0)" title="' + MESSAGES[13] + '"><i class="glyphicon glyphicon-info-sign"></i></a></li>');
         $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
         $('#lab-sidebar ul').append('<li class="action-nodes-li"><a class="action-nodes-li" href="javascript:void(0)" title="' + MESSAGES[62] + '"><i class="glyphicon glyphicon-hdd"></i></a></li>');
-        $('#lab-sidebar ul').append('<li class="action-configs-li"><a class="action-configs-li" href="javascript:void(0)" title="' + MESSAGES[269] + '"><i class="glyphicon glyphicon-floppy-save"></i></a></li>');
+        if ((ROLE == 'admin' || ROLE == 'editor') && LOCK == 0) {
+            $('#lab-sidebar ul').append('<li class="action-configs-li"><a class="action-configs-li" href="javascript:void(0)" title="' + MESSAGES[269] + '"><i class="glyphicon glyphicon-floppy-save"></i></a></li>');
+        }
         $('#lab-sidebar ul').append('<li><a class="action-networksget" href="javascript:void(0)" title="' + MESSAGES[61] + '"><i class="glyphicon glyphicon-transfer"></i></a></li>');
         $('#lab-sidebar ul').append('<li><a class="action-textobjectsget" href="javascript:void(0)" title="' + MESSAGES[150] + '"><i class="glyphicon glyphicon-text-background"></i></a></li>');
         $('#lab-sidebar ul').append('<li class="action-picturesget-li"><a class="action-picturesget" href="javascript:void(0)" title="' + MESSAGES[59] + '"><i class="glyphicon glyphicon-picture"></i></a></li>');
