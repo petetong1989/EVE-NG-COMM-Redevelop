@@ -21,7 +21,7 @@ Update 2020928
 - [x] Tune up webUI of the lab view
 - [x] Fix a bit bugs  
 
-# Useage
+# Usage
 
 1. Download the community version 203.110 from EVE-NG official or download it from the given link below
 
