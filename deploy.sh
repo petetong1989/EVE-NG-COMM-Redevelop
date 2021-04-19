@@ -85,4 +85,7 @@ if [ "$wrappers" != "failed" ]; then
 	fi
 fi
 
+sudo apt update -y >> /dev/null
+sudo apt install php7.0-gd -y
+
 exit 0 
