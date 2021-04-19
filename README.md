@@ -5,22 +5,6 @@ This is redevelop of EVE-NG Community version 203.110.
 
 Not limited the number of user and role `Admin`, `Editor`, `User`.
 
-Update 20201102
-- [x] Fix 'stop all nodes' role verification
-- [x] Add 'stop all nodes' response status viewable
-
-Update 2020920
-
-- [x] Link quality editable
-- [x] Serial port link style editable
-- [x] Fix a bit bugs
-
-Update 2020928
-
-- [x] Modify link quality apply mechanism
-- [x] Tune up webUI of the lab view
-- [x] Fix a bit bugs  
-
 # Usage
 
 1. Download the community version 203.110 from EVE-NG official or download it from the given link below
