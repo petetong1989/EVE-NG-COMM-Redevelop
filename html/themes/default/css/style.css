@@ -142,15 +142,15 @@ thead th {
 
 tbody {
 	background-color: #ffffff;
-	border: 0px;
+	border: 1px solid black;
 }
 
 tbody tr {
-	border: 0px solid #0066aa;
+	border: 1px solid black;
 }
 
 tbody td {
-	border: 0px;
+	border: 1px solid black;
 	font-family: 'Ubuntu Bold', Helvetica, Arial, sans-serif;
 	font-size: 0.8em;
 }
