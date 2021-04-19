@@ -221,6 +221,6 @@ MESSAGES[260] = 'Conntector bezier is currently Using!' ;
 MESSAGES[261] = 'Set connectors to bezier Failed!' ;
 MESSAGES[262] = 'Nodes List';
 MESSAGES[266] = 'Downloads';
-MESSAGES[267] = 'Configs List';
+MESSAGES[267] = '  Configs List';
 MESSAGES[268] = 'Apply';
 MESSAGES[269] = 'Configs'
