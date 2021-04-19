@@ -1101,12 +1101,12 @@ $(document).on('click', '.action-configs-li',
     function(e) {
         logger(1, 'DEBUG: action = configactions');
         var body = '';
-        body += '<li><a class="action-configsget" href="javascript:void(0)"><i class="glyphicon glyphicon-align-left"></i>' + MESSAGES[267] + '</a></li>'
+        body += '<li><a class="action-configsget" href="javascript:void(0)"><i class="glyphicon glyphicon glyphicon-list"></i>' + MESSAGES[267] + '</a></li>'
         body += '<li><a class="action-nodesexport" href="javascript:void(0)"><i class="glyphicon glyphicon-save"></i> ' + MESSAGES[129] + '</a></li>';
         body += '<li><a class="action-nodesbootsaved" href="javascript:void(0)"><i class="glyphicon glyphicon-flash"></i> ' + MESSAGES[139] + '</a></li>';
         body += '<li><a class="action-nodesbootscratch" href="javascript:void(0)"><i class="glyphicon glyphicon-remove"></i> ' + MESSAGES[140] + '</a></li>';
         body += '<li><a class="action-nodesbootdelete" href="javascript:void(0)"><i class="glyphicon glyphicon-erase"></i> ' + MESSAGES[141] + '</a></li>';
-        printContextMenu(MESSAGES[267], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
+        printContextMenu(MESSAGES[247], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
     })
 
 // Redraw topology
