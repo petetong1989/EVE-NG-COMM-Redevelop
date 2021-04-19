@@ -1134,11 +1134,9 @@ $(document).on('click', '.action-download_box',
     function(e) {
         logger(1, 'DEBUG: action = download box Menu');
         var body = '';
-        body += '<li><a href="/files/EVE-NG-Win-Client-Pack-2.0.exe"><i class="fa fa-file"></i> ' + "Windows Client Package" + '</a></li>';
-        body += '<li><a href="/files/windows.zip"><i class="fa fa-file"></i> ' + "Windows Manually Package" + '</a></li>';
-        body += '<li><a href="/files/EVE-ClientPack.dmg"><i class="fa fa-file"></i> ' + "MacOS Client Package" + '</a></li>';
-        body += '<li><a href="/files/osx.zip"><i class="fa fa-file"></i> ' + "MacOS Manually Package" + '</a></li>';
-        body += '<li><a href="https://github.com/SmartFinn/eve-ng-integration" target="_blank"><i class="fa fa-file"></i> ' + "Linux Environment Integration" + '</a></li>';
+        body += '<li><a href="/files/EVE-NG-Win-Client-Pack-2.0.exe"><i class="fa fa-file"></i> ' + "Windows Client" + '</a></li>';
+        body += '<li><a href="/files/EVE-ClientPack.dmg"><i class="fa fa-file"></i> ' + "MacOS Client" + '</a></li>';
+        body += '<li><a href="https://github.com/SmartFinn/eve-ng-integration" target="_blank"><i class="fa fa-file"></i> ' + "Linux Client" + '</a></li>';
         printContextMenu(MESSAGES[266], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
     });
 
