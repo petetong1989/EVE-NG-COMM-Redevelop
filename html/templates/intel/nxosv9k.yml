@@ -34,6 +34,7 @@ cpu: 2
 ram: 8192
 ethernet: 8
 console: telnet
+qemu_nic: e1000
 qemu_arch: x86_64
 qemu_version: 4.1.0
 qemu_options: -machine type=pc,accel=kvm -serial mon:stdio -nographic -enable-kvm
