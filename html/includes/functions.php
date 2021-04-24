@@ -611,7 +611,7 @@ function listNetworkTypes() {
 
 	// Listing pnet interfaces
 	foreach (scandir('/sys/devices/virtual/net') as $interface) {
-		if (preg_match('/^pnet[0-9]+$/', $interface)) {
+		if (preg_match('/^pnet[0-9]+$|^nat$/', $interface)) {
 			$results[$interface] = $interface;
 		}
 	}

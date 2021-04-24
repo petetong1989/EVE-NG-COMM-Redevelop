@@ -76,7 +76,7 @@ if [ ! -x $ciscokeygen ]; then
 fi
 
 if [ "$wrappers" != "failed" ]; then
-	sudo /opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+	sudo /opt/unetlab/wrappers/unl_wrapper -exia fixpermissions
 	if [ $? -ne 0 ]; then
 		echo '[-] fix permissions failed.'
 		exit 1
@@ -84,6 +84,9 @@ if [ "$wrappers" != "failed" ]; then
 		echo '[+] fix permissions success!'
 	fi
 fi
+
+sudo find ./scripts | xargs -n1 chmod +x
+sudo cp ./scirpts/evenat.sh /etc/profile.d/
 
 sudo apt update -y >> /dev/null
 sudo apt install php7.0-gd -y
