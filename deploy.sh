@@ -120,6 +120,7 @@ cat > /etc/rc.local <<EOF
 #
 # By default this script does nothing.
 
+/opt/unetlab/dhcp_nat_autoconfig.sh
 /usr/local/sbin/dkms_install_fastlinq.sh
 
 exit 0
