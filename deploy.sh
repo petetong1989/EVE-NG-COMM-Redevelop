@@ -85,10 +85,35 @@ if [ "$wrappers" != "failed" ]; then
 	fi
 fi
 
-sudo find ./scripts | xargs -n1 chmod +x
-sudo cp ./scirpts/evenat.sh /etc/profile.d/
+cat > /etc/rc.local <<EOF
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
 
-sudo apt update -y >> /dev/null
-sudo apt install php7.0-gd -y
+
+#/usr/local/sbin/dkms_install_fastlinq.sh
+
+checkpnetnat=$(ip link | grep pnet1)
+if [[ "$checkpnetnat" = "" ]]; then
+    brctl addbr pnet1;
+fi
+ip link set dev pnet1 up
+ip addr add 10.0.137.1/24 dev pnet1 > /dev/null 2>&1
+pkill dnsmasq
+dnsmasq --interface=pnet1 --dhcp-range=10.0.137.10,10.0.137.254,255.255.255.0 --dhcp-option=3,10.0.137.1 &
+iptables -t nat -D POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE > /dev/null 2>&1
+iptables -t nat -A POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE
+
+exit 0
+EOF
 
 exit 0 
