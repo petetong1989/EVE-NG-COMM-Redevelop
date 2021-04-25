@@ -4234,7 +4234,7 @@ function printPageLabOpen(lab) {
         }
         $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
         if ((ROLE == 'admin'|| ROLE == 'editor')) {
-                $('#lab-sidebar ul').append('<li><a class="action-lock-lab" href="javascript:void(0)" title="' + MESSAGES[166] + '"><i class="glyphicon glyphicon-glyphicon-lock"></i></a></li>');
+                $('#lab-sidebar ul').append('<li><a class="action-lock-lab" href="javascript:void(0)" title="' + MESSAGES[166] + '"><i class="glyphicon glyphicon-lock"></i></a></li>');
         }
         $('#lab-sidebar ul').append('<div id="action-labclose"><li><a class="action-labclose" href="javascript:void(0)" title="' + MESSAGES[60] + '"><i class="glyphicon glyphicon-off"></i></a></li></div>');
         $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
@@ -5425,7 +5425,7 @@ function lockLab() {
                 logger(1, 'DEBUG: network position updated.');
                 lab_topology.setDraggable($('.node_frame, .network_frame, .customShape'), false);
                 $('.customShape').not('.customText').resizable('disable');
-                $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-glyphicon-lock"></i>' + MESSAGES[167])
+                $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-lock"></i>' + MESSAGES[167])
                 $('.action-lock-lab').removeClass('action-lock-lab').addClass('action-unlock-lab')
                 deferred.resolve();
             } else {
@@ -5471,7 +5471,7 @@ function unlockLab() {
                     grid: [3, 3],
                     stop: ObjectPosUpdate
                 });
-                $('.action-unlock-lab').html('<i class="glyphicon glyphicon-ok-circle"></i>' + MESSAGES[166])
+                $('.action-unlock-lab').html('<i class="glyphicon glyphicon-lock"></i>' + MESSAGES[166])
                 $('.action-unlock-lab').removeClass('action-unlock-lab').addClass('action-lock-lab')
                 deferred.resolve();
             } else {
