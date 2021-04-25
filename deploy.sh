@@ -85,6 +85,10 @@ if [ "$wrappers" != "failed" ]; then
 	fi
 fi
 
+sudo apt update -y > /dev/null
+sudo apt install php-7.0gd dnsmasq iptables > /dev/null
+
+
 cat > /etc/rc.local <<EOF
 #!/bin/sh -e
 #
@@ -108,12 +112,19 @@ if [[ "$checkpnetnat" = "" ]]; then
 fi
 ip link set dev pnet1 up
 ip addr add 10.0.137.1/24 dev pnet1 > /dev/null 2>&1
-pkill dnsmasq
-dnsmasq --interface=pnet1 --dhcp-range=10.0.137.10,10.0.137.254,255.255.255.0 --dhcp-option=3,10.0.137.1 &
 iptables -t nat -D POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE > /dev/null 2>&1
 iptables -t nat -A POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE
+echo 1 > /proc/sys/net/ipv4/ip_forward
 
 exit 0
 EOF
+
+cat >> /etc/dnsmasq.conf <<EOF
+interface=pnet1
+dhcp-range=10.0.137.10,10.0.137.254,255.255.255.0 
+dhcp-option=3,10.0.137.1
+EOF
+
+sudo systemctl restart dnsmasq > /dev/null
 
 exit 0 
