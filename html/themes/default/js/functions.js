@@ -2182,7 +2182,7 @@ function printFormNetwork(action, values) {
                 if (value.startsWith('Cloud0')) {
                     value = value.replace('Cloud0', 'OBB Mgmt')
                 }
-                if (value.strartsWith('Cloud1')) {
+                if (value.startsWith('Cloud1')) {
                     value = value.replace('Cloud1', 'NAT')
                 }
                 var type_selected = (key == type) ? 'selected ': '';
