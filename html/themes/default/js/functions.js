@@ -5498,6 +5498,7 @@ function unlockLab() {
         $('.plus-minus-slider').after(labobjectadd);
     } else {
         $('.action-labobjectadd-li').show();
+        $('.action-configs-li').show();
     }
     // if ($('.action-configsget-li').length == 0) {
     //     configsget = '<li class="action-configsget-li"><a class="action-configsget" href="javascript:void(0)" title="' + 
