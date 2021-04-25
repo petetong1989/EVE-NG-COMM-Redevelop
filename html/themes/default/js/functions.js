@@ -3659,9 +3659,8 @@ function printLabTopology() {
                 if (labinfo['lock'] == 1) {
                     window.LOCK = 1;
                     defer.resolve();
-                    $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-lock"></i>' + MESSAGES[167])
-                    $('.action-lock-lab').removeClass('action-lock-lab').addClass('action-unlock-lab')
-
+                    $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-lock"></i>' + MESSAGES[167]);
+                    $('.action-lock-lab').removeClass('action-lock-lab').addClass('action-unlock-lab');
                 }
                 defer.resolve(LOCK);
                 $labViewport.data('refreshing', false);
@@ -4233,8 +4232,10 @@ function printPageLabOpen(lab) {
             $('#lab-sidebar ul').append('<li><a class="action-nightmode" href="javascript:void(0)" title="' + MESSAGES[235] + '"><i class="fas fa-moon"></i></a></li>');
         }
         $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
-        if ((ROLE == 'admin'|| ROLE == 'editor')) {
-                $('#lab-sidebar ul').append('<li><a class="action-lock-lab" href="javascript:void(0)" title="' + MESSAGES[166] + '"><i class="glyphicon glyphicon-lock"></i></a></li>');
+        if ((ROLE == 'admin'|| ROLE == 'editor') && LOCK == 0) {
+            $('#lab-sidebar ul').append('<li><a class="action-lock-lab" href="javascript:void(0)" title="' + MESSAGES[166] + '"><i class="glyphicon glyphicon-lock"></i></a></li>');
+        } else {
+            $('#lab-sidebar ul').append('<li><a class="action-unlock-lab" href="javascript:void(0)" title="' + MESSAGES[167] + '"><i style="color:red" class="glyphicon glyphicon-lock"></i></a></li>');
         }
         $('#lab-sidebar ul').append('<div id="action-labclose"><li><a class="action-labclose" href="javascript:void(0)" title="' + MESSAGES[60] + '"><i class="glyphicon glyphicon-off"></i></a></li></div>');
         $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
@@ -5501,7 +5502,7 @@ function unlockLab() {
     if ($('.action-configs-li').length == 0) {
         configsli = '<li class="action-configs-li"><a class="action-configs-li" href="javascript:void(0)" title="' + 
                         MESSAGES[269] + '"><i class="glyphicon glyphicon-floppy-save"></i>' + MESSAGES[269] + '</a></li>';
-        $('.action-nodes-li').after(configsli);
+        $("li[class='action-nodes-li']").after(configsli);
     } else {
         $('.action-configs-li').show();
     }
