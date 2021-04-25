@@ -2180,7 +2180,10 @@ function printFormNetwork(action, values) {
                 value = value.replace('pnet', 'Cloud')
                 // Custom Management Port for eth0
                 if (value.startsWith('Cloud0')) {
-                    value = value.replace('Cloud0', 'Management(Cloud0)')
+                    value = value.replace('Cloud0', 'OBB Mgmt')
+                }
+                if (value.strartsWith('Cloud1')) {
+                    value = value.replace('Cloud1', 'NAT')
                 }
                 var type_selected = (key == type) ? 'selected ': '';
                 html += '<option ' + type_selected + 'value="' + key + '">' + value + '</option>';
