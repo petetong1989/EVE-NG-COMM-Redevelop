@@ -86,7 +86,7 @@ if [ "$wrappers" != "failed" ]; then
 fi
 
 sudo apt update -y > /dev/null
-sudo apt install php-7.0gd dnsmasq iptables > /dev/null
+sudo apt install php7.0-gd dnsmasq iptables > /dev/null
 
 
 cat > /etc/rc.local <<EOF
