@@ -100,7 +100,7 @@ cat > /etc/rc.local <<EOF
 # By default this script does nothing.
 
 
-#/usr/local/sbin/dkms_install_fastlinq.sh
+/usr/local/sbin/dkms_install_fastlinq.sh
 
 checkpnetnat=$(ip link | grep pnet1)
 if [[ "$checkpnetnat" = "" ]]; then
