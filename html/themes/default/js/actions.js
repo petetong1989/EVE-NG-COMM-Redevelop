@@ -4074,6 +4074,13 @@ $("body").on("click", ".edit-line-style-form .cancelForm", function(m) {
     $(".edit-line-style-form").remove()
 });
 
+$("body").on("click", ".edit-link-quality-form .cancelForm",
+    function(g) {
+        g.preventDefault();
+        $(".frameoverlay").css("width", "calc( 100% - 20px)");
+        $(".edit-link-quality-form").remove();
+    });
+
 $(document).on("submit", ".edit-network-style-form", function(g) {
     g.preventDefault();
     var i = form2Array("network");
