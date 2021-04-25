@@ -119,7 +119,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 exit 0
 EOF
 
-cat >> /etc/dnsmasq.conf <<EOF
+cat > /etc/dnsmasq.conf <<EOF
 interface=pnet1
 dhcp-range=10.0.137.10,10.0.137.254,255.255.255.0 
 dhcp-option=3,10.0.137.1
