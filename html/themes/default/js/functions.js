@@ -5500,7 +5500,7 @@ function unlockLab() {
     }
     if ($('.action-configs-li').length == 0) {
         configsli = '<li class="action-configs-li"><a class="action-configs-li" href="javascript:void(0)" title="' + 
-                        MESSAGES[269] + '"><i class="glyphicon glyphicon-floppy-save"></i></a></li>';
+                        MESSAGES[269] + '"><i class="glyphicon glyphicon-floppy-save"></i>' + MESSAGES[269] + '</a></li>';
         $('.action-nodes-li').after(configsli);
     } else {
         $('.action-configs-li').show();
