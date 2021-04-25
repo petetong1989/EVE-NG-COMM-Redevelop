@@ -88,6 +88,23 @@ fi
 sudo apt update -y > /dev/null
 sudo apt install php7.0-gd dnsmasq iptables > /dev/null
 
+cat > /opt/unetlab/dhcp_nat_autoconfig.sh <<EOF
+#!/bin/bash
+
+checkpnetnat=$(ip link | grep pnet1)
+if [[ "$checkpnetnat" = "" ]]; then
+    brctl addbr pnet1;
+fi
+ip link set dev pnet1 up
+ip addr add 10.0.137.1/24 dev pnet1 > /dev/null 2>&1
+iptables -t nat -D POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE > /dev/null 2>&1
+iptables -t nat -A POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+exit 0
+EOF
+
+sudo chmod +x /opt/unetlab/dhcp_nat_autoconfig.sh
 
 cat > /etc/rc.local <<EOF
 #!/bin/sh -e
@@ -102,16 +119,6 @@ cat > /etc/rc.local <<EOF
 # bits.
 #
 # By default this script does nothing.
-
-checkpnetnat=$(ip link | grep pnet1)
-if [[ "$checkpnetnat" = "" ]]; then
-    brctl addbr pnet1;
-fi
-ip link set dev pnet1 up
-ip addr add 10.0.137.1/24 dev pnet1 > /dev/null 2>&1
-iptables -t nat -D POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE > /dev/null 2>&1
-iptables -t nat -A POSTROUTING -o pnet0 -s 10.0.137.1/24 -j MASQUERADE
-echo 1 > /proc/sys/net/ipv4/ip_forward
 
 /usr/local/sbin/dkms_install_fastlinq.sh
 
