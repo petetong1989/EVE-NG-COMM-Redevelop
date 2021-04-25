@@ -4074,40 +4074,6 @@ $("body").on("click", ".edit-line-style-form .cancelForm", function(m) {
     $(".edit-line-style-form").remove()
 });
 
-$("body").on("click", ".edit-link-quality-form .cancelForm",
-    function(g) {
-        g.preventDefault();
-        $(".frameoverlay").css("width", "calc( 100% - 20px)");
-        var h = form2Array("link");
-        h.save = 0;
-        var d = $("#lab-viewport").attr("data-path");
-        var b = [];
-        var a = "/api/labs" + d + "/quality";
-        var c = "DELETE";
-        var f = $.ajax({
-            cache: false,
-            timeout: TIMEOUT,
-            type: c,
-            url: encodeURI(a),
-            dataType: "json",
-            data: JSON.stringify(h),
-            success: function(e) {
-                if (e.status == "success") {
-                    $(".edit-link-quality-form").remove()
-                } else {
-                    logger(1, "DEBUG: application error (" + e.status + ") on " + c + " " + a + " (" + e.message + ").");
-                    addModal("ERROR", "<p>" + e.message + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
-                }
-            },
-            error: function(i) {
-                var e = getJsonMessage(i.responseText);
-                logger(1, "DEBUG: " + e);
-                $(".edit-link-quality-form").remove()
-            }
-        });
-        b.push(f);
-    });
-
 $(document).on("submit", ".edit-network-style-form", function(g) {
     g.preventDefault();
     var i = form2Array("network");
@@ -4219,43 +4185,6 @@ $(document).on("submit", ".edit-link-quality-form",
         $.when.apply(null, b).done(function() {
             $("#edit-link-quality-form").remove()
         });
-        return false
-    });
-
-$(document).on("click", ".edit-link-quality-form-apply",
-    function(g) {
-        g.preventDefault();
-        $(".frameoverlay").css("width", "calc( 100% - 20px)");
-        var h = form2Array("link");
-        h.save = 0;
-        var d = $("#lab-viewport").attr("data-path");
-        var b = [];
-        var a = "/api/labs" + d + "/qualityapply";
-        var c = "PUT";
-        var f = $.ajax({
-            cache: false,
-            timeout: TIMEOUT,
-            type: c,
-            url: encodeURI(a),
-            dataType: "json",
-            data: JSON.stringify(h),
-            success: function(e) {
-                if (e.status == "success") {
-                    logger(1, 'DEBUG: network "' + h.name + '" saved.');
-                    addMessage(e.status, e.message)
-                } else {
-                    logger(1, "DEBUG: application error (" + e.status + ") on " + c + " " + a + " (" + e.message + ").");
-                    addModal("ERROR", "<p>" + e.message + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
-                }
-            },
-            error: function(i) {
-                var e = getJsonMessage(i.responseText);
-                logger(1, "DEBUG: server error (" + i.status + ") on " + c + " " + a + ".");
-                logger(1, "DEBUG: " + e);
-                addModal("ERROR", "<p>" + e + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
-            }
-        });
-        b.push(f);
         return false
     });
 
