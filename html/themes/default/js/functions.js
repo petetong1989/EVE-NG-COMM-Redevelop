@@ -3659,7 +3659,7 @@ function printLabTopology() {
                 if (labinfo['lock'] == 1) {
                     window.LOCK = 1;
                     defer.resolve();
-                    $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-remove-circle"></i>' + MESSAGES[167])
+                    $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-lock"></i>' + MESSAGES[167])
                     $('.action-lock-lab').removeClass('action-lock-lab').addClass('action-unlock-lab')
 
                 }
@@ -5494,19 +5494,17 @@ function unlockLab() {
     if ($('.action-labobjectadd-li').length == 0) {
         labobjectadd = '<li class="action-labobjectadd-li"><a class="action-labobjectadd" href="javascript:void(0)" title="' + 
                         MESSAGES[56] + '"><i class="glyphicon glyphicon-plus"></i>' + MESSAGES[56] + '</a></li>';
-        // $('.action-labtopologyrefresh').prependTo();
         $('.plus-minus-slider').after(labobjectadd);
     } else {
         $('.action-labobjectadd-li').show();
+    }
+    if ($('.action-configs-li').length == 0) {
+        configsli = '<li class="action-configs-li"><a class="action-configs-li" href="javascript:void(0)" title="' + 
+                        MESSAGES[269] + '"><i class="glyphicon glyphicon-floppy-save"></i></a></li>';
+        $('.action-nodes-li').after(configsli);
+    } else {
         $('.action-configs-li').show();
     }
-    // if ($('.action-configsget-li').length == 0) {
-    //     configsget = '<li class="action-configsget-li"><a class="action-configsget" href="javascript:void(0)" title="' + 
-    //                   MESSAGES[58] + '"><i class="glyphicon glyphicon-align-left"></i>' + MESSAGES[58] + '</a></li>';
-    //     $('.action-status-bar').after(configsget);
-    // } else {
-    //     $('.action-configsget-li').show();
-    // }
 
     return deferred.promise();
 }
