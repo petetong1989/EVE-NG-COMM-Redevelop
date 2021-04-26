@@ -4208,7 +4208,7 @@ function printPageLabOpen(lab) {
         }
         $('#lab-sidebar ul').append('<li><a class="action-labtopologyrefresh" href="javascript:void(0)" title="' + MESSAGES[57] + '"><i class="glyphicon glyphicon-refresh"></i></a></li>');
         $('#lab-sidebar ul').append('<li><a class="action-labbodyget" href="javascript:void(0)" title="' + MESSAGES[64] + '"><i class="glyphicon glyphicon-list-alt"></i></a></li>');
-        if (ROLE == 'admin' || ROLE == 'editor') {
+        if ((ROLE == 'admin' || ROLE == 'editor') && LOCK == 0) {
             $('#lab-sidebar ul').append('<li><a class="action-labedit" href="javascript:void(0)" title="' + MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i></a></li>');
         }
         $('#lab-sidebar ul').append('<li class="action-status-bar"><a class="action-status" href="javascript:void(0)" title="' + MESSAGES[13] + '"><i class="glyphicon glyphicon-info-sign"></i></a></li>');
@@ -5448,6 +5448,7 @@ function lockLab() {
     });
     $('.action-labobjectadd-li').hide();
     $('.action-configs-li').hide();
+    $('.action-labedit').hide();
     return deferred.promise();
 }
 
@@ -5505,6 +5506,12 @@ function unlockLab() {
         $("li[class='action-nodes-li']").after(configsli);
     } else {
         $('.action-configs-li').show();
+    }
+    if ($('.action-labedit').length ==0) {
+        labedit = '<li><a class="action-labedit" href="javascript:void(0)" title="' + MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i></a></li>'
+        $('.action-status-bar').before(labedit);
+    } else {
+        $('.action-labedit').show();
     }
 
     return deferred.promise();
