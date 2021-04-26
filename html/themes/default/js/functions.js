@@ -4209,7 +4209,7 @@ function printPageLabOpen(lab) {
         $('#lab-sidebar ul').append('<li><a class="action-labtopologyrefresh" href="javascript:void(0)" title="' + MESSAGES[57] + '"><i class="glyphicon glyphicon-refresh"></i></a></li>');
         $('#lab-sidebar ul').append('<li><a class="action-labbodyget" href="javascript:void(0)" title="' + MESSAGES[64] + '"><i class="glyphicon glyphicon-list-alt"></i></a></li>');
         if ((ROLE == 'admin' || ROLE == 'editor') && LOCK == 0) {
-            $('#lab-sidebar ul').append('<li><a class="action-labedit" href="javascript:void(0)" title="' + MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i></a></li>');
+            $('#lab-sidebar ul').append('<li class="action-labedit"><a class="action-labedit" href="javascript:void(0)" title="' + MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i></a></li>');
         }
         $('#lab-sidebar ul').append('<li class="action-status-bar"><a class="action-status" href="javascript:void(0)" title="' + MESSAGES[13] + '"><i class="glyphicon glyphicon-info-sign"></i></a></li>');
         $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
@@ -5508,7 +5508,8 @@ function unlockLab() {
         $('.action-configs-li').show();
     }
     if ($('.action-labedit').length ==0) {
-        labedit = '<li><a class="action-labedit" href="javascript:void(0)" title="' + MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i></a></li>'
+        labedit = '<li class="action-labedit"><a class="action-labedit" href="javascript:void(0)" title="' + 
+                        MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i>' + MESSAGES[87] + '</a></li>'
         $('.action-status-bar').before(labedit);
     } else {
         $('.action-labedit').show();
